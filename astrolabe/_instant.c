@@ -43,7 +43,7 @@ static PyObject * instant(PyObject *self, PyObject *args) {
   return PyLong_FromUnsignedLongLong(tick.QuadPart);
 #elif __unix
   struct timespec time;
-  int rc;
+  int err;
   err = clock_gettime( CLOCK_MONOTONIC, &time);
   if (err != 0)  {
     char * message = strerror(err);
