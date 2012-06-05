@@ -36,3 +36,9 @@ class IntervalTest(TestCase):
         interval = Interval.now()
         self.assertTrue(interval.started)
         self.assertFalse(interval.stopped)
+
+    def test_split(self):
+        interval = Interval()
+        interval.start()
+        splitted_interval = interval.split()
+        self.assertEquals(interval.stop_instant, splitted_interval.start_instant)
