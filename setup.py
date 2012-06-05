@@ -23,7 +23,7 @@ if "java" not in sys.version.lower():
 
 setup(
     name='astrolabe',
-    version='0.1.1',
+    version='0.1.2',
     description='Fast, high resolution timer library for recording performance metrics.',
     long_description=readme,
     author='Timothée Peignier',
