@@ -1,7 +1,7 @@
-from time import time
+from time import clock
 
 CONVERSION_FACTOR = 1
 
 
 def instant():
-    return time()
+    return clock()
