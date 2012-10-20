@@ -10,7 +10,7 @@ with open('LICENSE') as f:
 
 setup(
     name='astrolabe',
-    version='0.1.3',
+    version='0.2.0',
     description='Fast, high resolution timer library for recording performance metrics.',
     long_description=readme,
     author='Timothée Peignier',
