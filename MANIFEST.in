@@ -2,4 +2,3 @@ include docs/*
 include AUTHORS
 include LICENSE
 include README.rst
-include atomic/com/lapanthere/astrolabe/*
