@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
-import sys
-
-from setuptools import setup, find_packages, Extension
+from setuptools import setup, find_packages
 
 
 with open('README.rst') as f:
@@ -10,16 +7,6 @@ with open('README.rst') as f:
 
 with open('LICENSE') as f:
     license = f.read()
-
-if 'darwin' in str(sys.platform).lower():
-    os.environ['LDFLAGS'] = '-framework CoreServices'
-
-kwargs = {}
-if "java" not in sys.version.lower():
-    kwargs = dict(ext_modules=[
-        Extension("astrolabe._instant", ["astrolabe/_instant.c"],
-        )
-    ])
 
 setup(
     name='astrolabe',
@@ -39,6 +26,5 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Utilities',
-    ],
-    **kwargs
+    ]
 )

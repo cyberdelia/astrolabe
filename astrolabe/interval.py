@@ -1,13 +1,7 @@
-from __future__ import division
-
 try:
-    try:
-        from com.lapanthere.astrolabe import Instant
-        instant, CONVERSION_FACTOR = Instant.instant, Instant.CONVERSION_FACTOR
-    except ImportError:
-        from astrolabe._instant import instant, CONVERSION_FACTOR
+    from time import perf_counter as instant
 except ImportError:
-    from astrolabe.instant import instant, CONVERSION_FACTOR  # noqa
+    from time import time as instant  # noqa
 
 from astrolabe.exceptions import IntervalException
 
@@ -56,7 +50,7 @@ class Interval(object):
         self.stop()
         interval = Interval()
         interval._start_instant = self.stop_instant
-        return interval 
+        return interval
 
     def start(self):
         """Mark the start of the interval.
@@ -83,7 +77,7 @@ class Interval(object):
             raise IntervalException("Attempt to stop an interval that has not started.")
         if self._stop_instant is None:
             self._stop_instant = instant()
-            self._duration = (self._stop_instant - self._start_instant) / CONVERSION_FACTOR
+            self._duration = (self._stop_instant - self._start_instant)
             return self._duration
         return False
 
@@ -97,7 +91,7 @@ class Interval(object):
         if self._start_instant is None:
             return False
         if self._stop_instant is None:
-            return (instant() - self._start_instant) / CONVERSION_FACTOR
+            return (instant() - self._start_instant)
         return False
 
     @property
@@ -144,7 +138,7 @@ class Interval(object):
         it will report the number of seconds in the interval up to the current point in time.
         """
         if self._stop_instant is None:
-            return (instant() - self._start_instant) / CONVERSION_FACTOR
+            return (instant() - self._start_instant)
         if self._duration is None:
-            self._duration = (self._stop_instant - self._start_instant) / CONVERSION_FACTOR
+            self._duration = (self._stop_instant - self._start_instant)
         return self._duration
