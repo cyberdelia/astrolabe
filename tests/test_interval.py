@@ -1,3 +1,5 @@
+import time
+
 from unittest import TestCase
 
 from astrolabe import Interval
@@ -29,6 +31,7 @@ class IntervalTest(TestCase):
         interval = Interval()
         interval.start()
         first = interval.duration
+        time.sleep(0.1)
         second = interval.duration
         self.assertTrue(second > first)
 

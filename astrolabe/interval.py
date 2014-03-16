@@ -77,7 +77,7 @@ class Interval(object):
             raise IntervalException("Attempt to stop an interval that has not started.")
         if self._stop_instant is None:
             self._stop_instant = instant()
-            self._duration = (self._stop_instant - self._start_instant)
+            self._duration = int((self._stop_instant - self._start_instant) * 1000)
             return self._duration
         return False
 
@@ -91,7 +91,7 @@ class Interval(object):
         if self._start_instant is None:
             return False
         if self._stop_instant is None:
-            return (instant() - self._start_instant)
+            return int((instant() - self._start_instant) * 1000)
         return False
 
     @property
@@ -132,13 +132,13 @@ class Interval(object):
 
     @property
     def duration(self):
-        """Returns the Float value of the interval, the value is in seconds.
+        """Returns the integer value of the interval, the value is in milliseconds.
 
         If the interval has not had stop called yet,
-        it will report the number of seconds in the interval up to the current point in time.
+        it will report the number of milliseconds in the interval up to the current point in time.
         """
         if self._stop_instant is None:
-            return (instant() - self._start_instant)
+            return int((instant() - self._start_instant) * 1000)
         if self._duration is None:
-            self._duration = (self._stop_instant - self._start_instant)
+            self._duration = int((self._stop_instant - self._start_instant) * 1000)
         return self._duration
