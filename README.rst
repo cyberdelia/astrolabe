@@ -2,7 +2,7 @@
 Astrolabe
 =========
 
-Fast, high resolution timer library for recording performance metrics.
+Timer library for recording performance metrics.
 
 Installation
 ============
